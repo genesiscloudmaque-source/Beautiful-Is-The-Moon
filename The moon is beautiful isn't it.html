@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="月が綺麗ですね — The moon is beautiful, isn't it? An immersive love letter inspired by Natsume Sōseki's famous expression of love.">
+    <title>月が綺麗ですね — The Moon is Beautiful</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&family=Inter:wght@200;300;400&family=Outfit:wght@100;200;300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ═══ CINEMATIC INTRO ═══ -->
+    <div id="cinematic-intro">
+        <div class="intro-line" id="intro1">ある夜のこと...</div>
+        <div class="intro-line intro-line-en" id="intro2">On a certain night...</div>
+        <div class="intro-line" id="intro3" style="margin-top:30px">月が空に昇った</div>
+        <div class="intro-line intro-line-en" id="intro4">The moon rose into the sky</div>
+        <div class="intro-line" id="intro5" style="margin-top:30px">そして、誰かがこう呟いた —</div>
+        <div class="intro-line intro-line-en" id="intro6">And someone whispered —</div>
+        <div class="intro-line" id="intro7" style="margin-top:50px; font-size: clamp(1.5rem,4vw,2.5rem);">月が綺麗ですね</div>
+        <button class="intro-skip" id="skipIntro">Skip Intro</button>
+    </div>
+
+    <!-- ═══ SCROLL PROGRESS BAR ═══ -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ═══ BACKGROUND LAYERS ═══ -->
+    <canvas id="starfield"></canvas>
+    <canvas id="shooting-stars"></canvas>
+    <canvas id="fireflies"></canvas>
+    <canvas id="sakura-canvas"></canvas>
+    <canvas id="lanterns-canvas"></canvas>
+    <div class="aurora">
+        <div class="aurora-band"></div>
+        <div class="aurora-band"></div>
+        <div class="aurora-band"></div>
+    </div>
+    <div class="ambient-overlay"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ═══ NAV ═══ -->
+    <nav id="mainNav">
+        <div class="nav-brand">月の詩</div>
+        <ul class="nav-links">
+            <li><a href="#origin">Origin</a></li>
+            <li><a href="#letter">Letter</a></li>
+            <li><a href="#expressions">Expressions</a></li>
+            <li><a href="#poem">Poem</a></li>
+            <li><a href="#redstring">Fate</a></li>
+            <li><a href="#lanterns">Wishes</a></li>
+            <li><a href="#forever">Forever</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- ═══ HERO ═══ -->
+        <section class="hero" id="home">
+            <div class="moon-container" id="moonContainer">
+                <div class="moon-halo"></div>
+                <div class="moon-halo"></div>
+                <div class="moon-halo"></div>
+                <div class="moon-halo"></div>
+                <div class="moon" id="moonEl"></div>
+            </div>
+            <div class="moon-reflection"></div>
+            <div class="hero-items">
+                <h1 class="hero-japanese" id="heroJp">月が綺麗ですね</h1>
+                <p class="hero-romaji" id="heroRom">Tsuki ga kirei desu ne</p>
+                <p class="hero-translation" id="heroTrans">"The moon is beautiful, isn't it?"</p>
+                <p class="hero-meaning" id="heroMean">— The most poetic way to say "I love you" in Japanese</p>
+            </div>
+            <div class="scroll-indicator">
+                <span>Discover the story</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ═══ LANDSCAPE SILHOUETTE ═══ -->
+        <div class="landscape">
+            <div class="mountain-layer">
+                <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+                    <path
+                        d="M0,200 L0,120 Q120,60 240,100 Q360,140 480,80 Q600,20 720,70 Q840,120 960,60 Q1080,0 1200,50 Q1320,100 1440,70 L1440,200 Z"
+                        fill="rgba(8,8,18,0.95)" />
+                    <path
+                        d="M0,200 L0,140 Q180,90 360,130 Q540,170 720,110 Q900,50 1080,90 Q1260,130 1440,100 L1440,200 Z"
+                        fill="rgba(6,6,15,1)" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- ═══ ORIGIN STORY ═══ -->
+        <section class="story-section" id="origin">
+            <div class="section-label"><span>The Origin</span></div>
+            <p class="story-text reveal">
+                Over a century ago, the great novelist <span class="gold">Natsume Sōseki</span> stood
+                before his English class. A student had translated <em>"I love you"</em>
+                word for word into Japanese — and Sōseki shook his head.
+            </p>
+            <br>
+            <p class="story-text reveal" style="transition-delay: 0.2s">
+                <em>"日本人はそんな事は言わない。月が綺麗ですね、とでも訳しておけ。"</em>
+            </p>
+            <br>
+            <p class="story-text reveal" style="transition-delay: 0.4s">
+                <em>"Japanese people don't say things like that.
+                    Just translate it as — the moon is beautiful, isn't it?"</em>
+            </p>
+            <br>
+            <p class="story-text reveal" style="transition-delay: 0.6s">
+                He understood what most people never will — that <span class="gold">real love</span>
+                is too enormous for three small words. It overflows. It hides itself
+                in the things you <em>almost</em> say, in the way you look at someone
+                when they're not watching, in the tremble of a voice that can't
+                say what it means. So instead, you look up at the sky together.
+                And you pray they <em>understand</em>.
+            </p>
+            <br>
+            <p class="story-text reveal" style="transition-delay: 0.8s">
+                That is what I'm doing right now.
+                I'm looking at the moon. And I'm thinking of <em>you</em>.
+            </p>
+            <p class="story-attribution reveal" style="transition-delay: 1s">
+                — Because some feelings are too sacred to say out loud
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ VERTICAL JAPANESE TEXT ═══ -->
+        <section class="vertical-section" id="vertical">
+            <div class="vertical-column reveal-left">
+                <span class="glow">月</span>の光が<br>
+                あなたの<span class="accent">顔</span>を照らす時<br>
+                私の<span class="accent">心</span>は<br>
+                静かに<span class="glow">歌</span>い始める<br>
+                言葉にならない<br>
+                この<span class="accent">想い</span>を
+            </div>
+            <div class="vertical-translation reveal-right">
+                <h3>"When the moonlight touches your face..."</h3>
+                <p>
+                    When the moonlight touches your face, something inside me goes quiet.
+                    Not empty — full. So unbearably full that I forget how to speak.
+                    <br><br>
+                    That's what you do to me. You make silence feel like the most
+                    honest language in the world. And in that silence, my heart says
+                    everything I'm too overwhelmed to put into words — that you are
+                    <em style="color:var(--sakura-pink)">the most beautiful thing I've ever known</em>,
+                    and I'm terrified of how much I mean that.
+                </p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ LOVE LETTER ═══ -->
+        <section class="letter-section" id="letter">
+            <div class="envelope-container reveal-scale">
+                <div class="envelope">
+                    <div class="envelope-seal">💌</div>
+                    <div class="envelope-body">
+                        <div class="letter-content">
+                            <div class="letter-greeting">拝啓、愛しい人へ —</div>
+                            <p class="letter-body-text">
+                                I've rewritten this letter a hundred times.
+                                Every version felt too small. Every word felt like
+                                trying to hold the ocean in my hands.
+                                <br><br>
+                                How do you tell someone that they've
+                                changed the entire color of your world?
+                                That before them, everything was just... <span class="gold">quiet</span>?
+                                <br><br>
+                                You didn't just walk into my life.
+                                You became the <span class="pink">reason</span> it feels like one.
+                                <br><br>
+                                I notice you in everything now.
+                                In songs I never listened to before.
+                                In the way the light falls at golden hour.
+                                In the way my chest aches when you laugh —
+                                not from pain, but from a <span class="gold">fullness</span> I didn't know
+                                I was capable of feeling.
+                                <br><br>
+                                So I won't say those three words.
+                                They're too small for this.
+                                Instead I'll say what <span class="pink">Sōseki</span> taught me:
+                                <br><br>
+                                <strong style="color:var(--moon-glow); font-weight:500; font-size:1.2em;">
+                                    The moon is beautiful tonight.
+                                </strong>
+                                <br><br>
+                                And I hope you hear what I really mean.
+                            </p>
+                            <div class="letter-closing">あなただけに — 永遠にあなたのもの</div>
+                            <div class="letter-sign">Only for you. Forever yours.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ LOVE EXPRESSION CARDS ═══ -->
+        <section class="cards-section" id="expressions">
+            <div class="section-label"><span>Ways to Say I Love You</span></div>
+            <div class="cards-grid">
+                <div class="love-card reveal"><span class="card-icon">🌙</span>
+                    <div class="card-jp">月が綺麗ですね</div>
+                    <div class="card-romaji">Tsuki ga kirei desu ne</div>
+                    <div class="card-meaning">"The moon is beautiful, isn't it?"</div>
+                    <p class="card-desc">The confession that changed everything. Instead of saying the words outright,
+                        you trust someone to hear your heart through the beauty of the night sky.
+                        It takes more courage than any direct confession ever could.
+                    </p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">🌸</span>
+                    <div class="card-jp">死んでもいいわ</div>
+                    <div class="card-romaji">Shindemo ii wa</div>
+                    <div class="card-meaning">"I can die happy."</div>
+                    <p class="card-desc">The only response that matches the weight of the confession. It means:
+                        "Knowing that you love me — I have already lived the most beautiful life possible.
+                        Nothing could ever top this moment."</p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">🌊</span>
+                    <div class="card-jp">海が聞こえる</div>
+                    <div class="card-romaji">Umi ga kikoeru</div>
+                    <div class="card-meaning">"I can hear the ocean."</div>
+                    <p class="card-desc">You walk into a room and suddenly the air changes. I can feel you
+                        the way you feel the ocean before you see it — vast, overwhelming,
+                        pulling me toward you like a tide I never want to resist.</p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">⭐</span>
+                    <div class="card-jp">明日は晴れるかな</div>
+                    <div class="card-romaji">Ashita wa hareru kana</div>
+                    <div class="card-meaning">"I wonder if tomorrow will be sunny."</div>
+                    <p class="card-desc">The softest way to say: "I'm already thinking about tomorrow because
+                        I know you'll be in it. Every future I imagine has your face in it.
+                        You've made me someone who looks forward to waking up."</p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">🍃</span>
+                    <div class="card-jp">あなたと居ると暖かい</div>
+                    <div class="card-romaji">Anata to iru to atatakai</div>
+                    <div class="card-meaning">"I feel warm when I'm with you."</div>
+                    <p class="card-desc">Before you, I didn't realize I was cold. You didn't just warm me —
+                        you became the warmth itself. My safe place. The person I run toward,
+                        not away from. You feel like coming home.</p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">🌺</span>
+                    <div class="card-jp">花が咲いている</div>
+                    <div class="card-romaji">Hana ga saiteiru</div>
+                    <div class="card-meaning">"The flowers are blooming."</div>
+                    <p class="card-desc">I used to see the world in muted colors. Then you came along,
+                        and suddenly everything bloomed. Music sounds different.
+                        Sunsets hit harder. Even the rain feels romantic. You didn't
+                        just enter my world — you brought it to life.</p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">🦋</span>
+                    <div class="card-jp">あなたは私の太陽です</div>
+                    <div class="card-romaji">Anata wa watashi no taiyō desu</div>
+                    <div class="card-meaning">"You are my sun."</div>
+                    <p class="card-desc">The moon hides love in darkness, but you — you are my daylight.
+                        You see through my walls. You light up the parts of me I used to hide.
+                        Without you, I'm just someone waiting for the sunrise.</p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">🕊️</span>
+                    <div class="card-jp">雨が止んだね</div>
+                    <div class="card-romaji">Ame ga yanda ne</div>
+                    <div class="card-meaning">"The rain has stopped."</div>
+                    <p class="card-desc">I was in the middle of the longest storm of my life when I found you.
+                        And suddenly — silence. Stillness. The clouds parted.
+                        You didn't just stop the rain. You made me forget it was ever raining at all.</p>
+                </div>
+                <div class="love-card reveal"><span class="card-icon">🔥</span>
+                    <div class="card-jp">星が降るようだ</div>
+                    <div class="card-romaji">Hoshi ga furu yō da</div>
+                    <div class="card-meaning">"It's as if the stars are falling."</div>
+                    <p class="card-desc">When you're near me, the ordinary becomes impossible.
+                        Even the stars abandon the sky just to be closer to you.
+                        I understand them completely — because I'd do the same.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ THE POEM ═══ -->
+        <section class="poem-section" id="poem">
+            <div class="poem-container">
+                <div class="section-label"><span>A Poem for You</span></div>
+                <p class="poem-line reveal">I didn't say <span class="highlight">"I love you"</span></p>
+                <p class="poem-line reveal">because those words have been borrowed too many times</p>
+                <p class="poem-line reveal">by people who didn't <span class="highlight">mean</span> them.</p>
+                <br>
+                <p class="poem-line reveal">So I said, <span class="moon-word">"the moon is beautiful tonight"</span>
+                </p>
+                <p class="poem-line reveal">and I <span class="highlight">meant</span>:</p>
+                <p class="poem-line reveal">you are the only person I want standing next to me</p>
+                <p class="poem-line reveal">when the <span class="moon-word">sky</span> looks like this.</p>
+                <br>
+                <p class="poem-line reveal">I <span class="highlight">meant</span>:</p>
+                <p class="poem-line reveal">every <span class="moon-word">silver beam</span> that touches your face</p>
+                <p class="poem-line reveal">is my heart, reaching for you</p>
+                <p class="poem-line reveal">through the only language <span class="highlight">honest enough</span></p>
+                <p class="poem-line reveal">to hold something this <span class="highlight">terrifyingly
+                        beautiful</span>.</p>
+                <br>
+                <p class="poem-line reveal">I <span class="highlight">meant</span>:</p>
+                <p class="poem-line reveal">I have looked at a thousand <span class="moon-word">moons</span></p>
+                <p class="poem-line reveal">but I never understood why they were beautiful</p>
+                <p class="poem-line reveal">until I had <span class="highlight">you</span> to think about while looking
+                    at them.</p>
+                <br>
+                <p class="poem-line reveal">And if you ever doubt — even for a <span class="moon-word">second</span> —
+                </p>
+                <p class="poem-line reveal">whether someone in this world loves you</p>
+                <p class="poem-line reveal">with their <span class="highlight">entire, messy, overwhelming heart</span>:
+                </p>
+                <br>
+                <p class="poem-line reveal">Look up.</p>
+                <p class="poem-line reveal">The <span class="moon-word">moon</span> is beautiful tonight.</p>
+                <p class="poem-line reveal">And I am thinking of <span class="highlight">you</span>.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ HAIKU ═══ -->
+        <section class="haiku-section" id="haiku">
+            <div class="section-label"><span>Love in Haiku</span></div>
+            <div class="haiku-grid">
+                <div class="haiku-card reveal">
+                    <div class="haiku-jp">月の下で<br>手を繋いだまま<br>永遠を知る</div>
+                    <div class="haiku-en">Under the moon<br>Holding hands in silence<br>We learn what forever means
+                    </div>
+                    <div class="haiku-author">— Original</div>
+                </div>
+                <div class="haiku-card reveal">
+                    <div class="haiku-jp">桜散る<br>あなたの髪に<br>春が来る</div>
+                    <div class="haiku-en">Cherry blossoms fall<br>Upon your hair, and with them<br>Spring arrives at
+                        last</div>
+                    <div class="haiku-author">— Original</div>
+                </div>
+                <div class="haiku-card reveal">
+                    <div class="haiku-jp">星が一つ<br>あなたに落ちた夜<br>願い叶う</div>
+                    <div class="haiku-en">One star fell<br>Toward you that night, and so<br>My wish came true</div>
+                    <div class="haiku-author">— Original</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ RED STRING OF FATE ═══ -->
+        <section class="red-string-section" id="redstring">
+            <canvas id="red-string-canvas"></canvas>
+            <div class="section-label"><span>運命の赤い糸</span></div>
+            <div class="red-string-title reveal">運命の赤い糸</div>
+            <div class="red-string-subtitle reveal">The Red String of Fate</div>
+            <p class="red-string-text reveal">
+                There is an ancient Japanese legend that says the gods tie
+                an invisible <em>red thread</em> around the pinky fingers of
+                two people who are destined to find each other.
+                <br><br>
+                The thread may stretch across oceans. It may tangle through
+                years of missed chances and wrong timings.
+                But it <em>never, ever breaks</em>.
+                <br><br>
+                I think about this a lot. About all the things that had to
+                go exactly right — every choice, every wrong turn,
+                every heartbreak that wasn't really a heartbreak
+                but a <em>redirection</em> — just to bring me to you.
+                <br><br>
+                And now that I'm here, I know:
+                the thread was never pulling me toward a place.
+                It was pulling me toward a <em>person</em>.
+                <br><br>
+                It was always you.
+            </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ HEARTBEAT ═══ -->
+        <section class="heartbeat-section" id="heart">
+            <div class="section-label"><span>A Beating Heart</span></div>
+            <div class="heartbeat-container">
+                <div class="heart-pulse-ring"></div>
+                <div class="heart-pulse-ring"></div>
+                <div class="heart-pulse-ring"></div>
+                <div class="heart-pulse-ring"></div>
+                <div class="heart" id="heartEmoji">❤️</div>
+            </div>
+            <p class="heartbeat-text reveal">この心臓はあなたのために鳴っている</p>
+            <p class="heartbeat-sub reveal">"This heart beats only for you"</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ WHISPERED CONFESSIONS ═══ -->
+        <section class="timeline-section" id="whispers">
+            <div class="section-label"><span>Whispered Confessions</span></div>
+            <div class="timeline">
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-jp">好きだよ</div>
+                    <div class="timeline-en">"I like you" — Suki da yo</div>
+                    <p class="timeline-desc">The first time the word slips out — barely louder than a heartbeat.
+                        You say it casually, almost playfully, hoping they don't notice
+                        how much your hands are shaking underneath the table.</p>
+                </div>
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-jp">大好きだよ</div>
+                    <div class="timeline-en">"I really like you" — Daisuki da yo</div>
+                    <p class="timeline-desc">The upgrade that hits different. This is when "like" starts keeping you
+                        up at night. When their name makes you smile before you even open the message.
+                        When you realize — oh. This isn't going away.</p>
+                </div>
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-jp">月が綺麗ですね</div>
+                    <div class="timeline-en">"The moon is beautiful" — Tsuki ga kirei desu ne</div>
+                    <p class="timeline-desc">When "I love you" feels too direct, too vulnerable, too terrifyingly real —
+                        you borrow the moon. You say something beautiful and pray they hear
+                        the earthquake happening inside your chest.</p>
+                </div>
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-jp">愛してる</div>
+                    <div class="timeline-en">"I love you" — Aishiteru</div>
+                    <p class="timeline-desc">The words most Japanese people only say a handful of times in their
+                        entire lives. Not because they don't feel it — but because they feel
+                        it so deeply that saying it aloud feels like cracking open your ribcage
+                        and letting someone see the softest, most fragile part of you.</p>
+                </div>
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-jp">死んでもいいわ</div>
+                    <div class="timeline-en">"I'd die happy" — Shindemo ii wa</div>
+                    <p class="timeline-desc">The ultimate surrender. It means: "You have given me a love so
+                        overwhelming that even if this were my last breath, I would spend it
+                        grateful. You made existing feel like a gift."</p>
+                </div>
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-jp">来世でもまた会おうね</div>
+                    <div class="timeline-en">"Let's meet again in the next life"</div>
+                    <p class="timeline-desc">The promise that makes the universe feel small. It means:
+                        my love for you is not contained by this life. In every timeline,
+                        in every version of reality, some part of me is searching for
+                        some part of you. And when we find each other again,
+                        I'll look up at the sky and whisper: the moon is beautiful tonight.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ SKY LANTERNS / WISHING ═══ -->
+        <section class="lantern-section" id="lanterns">
+            <div class="section-label"><span>天灯 — Sky Lanterns</span></div>
+            <div class="lantern-title reveal">あなたの願いを空に</div>
+            <div class="lantern-sub reveal">Release your wish into the sky</div>
+            <div class="wish-input-container reveal">
+                <input type="text" class="wish-input" id="wishInput" placeholder="Write your wish or love message..."
+                    maxlength="100">
+                <button class="wish-btn" id="wishBtn">Release 🏮</button>
+            </div>
+            <div class="wish-released" id="wishMsg">Your wish floats among the stars... ✨</div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ CONSTELLATION DRAWING ═══ -->
+        <section class="constellation-section" id="constellation">
+            <div class="section-label"><span>Draw Your Love in the Stars</span></div>
+            <canvas id="constellation-canvas"></canvas>
+            <p class="constellation-hint">Click on the canvas to place stars and draw your own constellation of love</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══ FINAL DECLARATION ═══ -->
+        <section class="final-section" id="forever">
+            <div class="section-label"><span>永遠に — Forever</span></div>
+            <div class="final-kanji reveal-scale">愛</div>
+            <div class="final-reading reveal">AI — LOVE</div>
+            <p class="final-english reveal">"If the universe gave me a thousand lives, I'd find you in every single
+                one."</p>
+            <p class="final-whisper reveal">
+                You are the answer to a question<br>
+                I didn't know I was asking.<br>
+                The missing piece I didn't know was missing.<br>
+                The person I was always walking toward<br>
+                without knowing where I was going.<br>
+                <br>
+                Thank you for being you.<br>
+                Thank you for letting me love you.<br>
+                Thank you for making the moon beautiful.
+            </p>
+            <div class="final-moon-repeat reveal">
+                月が綺麗ですね — いつまでも、いつまでも。
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-jp">あなたに出会えて、本当によかった</div>
+        <div class="footer-en">"I'm so glad I found you."</div>
+        <div class="footer-heart">🌙</div>
+        <div class="footer-copy">every word on this page is for you ✦ 月が綺麗ですね</div>
+    </footer>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="musicToggle" title="Toggle ambient music">
+        <div class="music-bars">
+            <div class="music-bar"></div>
+            <div class="music-bar"></div>
+            <div class="music-bar"></div>
+            <div class="music-bar"></div>
+        </div>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
